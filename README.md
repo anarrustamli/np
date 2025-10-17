@@ -1,8 +1,49 @@
 # Workflow Automation SaaS Platform
 
-This repository contains planning materials for building a production-ready workflow automation SaaS inspired by ActivePieces. Refer to [`docs/project-brief.md`](docs/project-brief.md) for the complete project brief, including business strategy, technical architecture, feature roadmap, and implementation milestones.
+This repository now contains the initial code scaffold for the Workflow Automation SaaS platform alongside the original project planning brief. The workspace is organised as a pnpm-based monorepo with separate applications for the API and web client plus a shared package for cross-cutting utilities.
 
-## Repository Structure
-- `docs/` – project documentation and planning assets.
+- [Project Brief](docs/project-brief.md)
+- [Monorepo Structure](#monorepo-structure)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
 
-Future updates will introduce the application codebase following the monorepo scaffold defined in the project brief.
+## Monorepo Structure
+
+```
+.
+├── apps
+│   ├── api        # Express + TypeScript HTTP API skeleton
+│   └── web        # Vite + React TypeScript SPA shell
+├── packages
+│   └── shared     # Shared TypeScript utilities (e.g., response builders)
+├── docs           # Planning and product documentation
+├── package.json   # Workspace root with shared scripts
+└── pnpm-workspace.yaml
+```
+
+## Getting Started
+
+1. Install dependencies using pnpm (recommended version 8+):
+   ```bash
+   pnpm install
+   ```
+2. Start the API in development mode:
+   ```bash
+   pnpm --filter @workflow-saas/api dev
+   ```
+3. Start the web client:
+   ```bash
+   pnpm --filter @workflow-saas/web dev
+   ```
+
+Both services will reload automatically when files are changed. Environment variables for the API can be set via an `.env` file at the repository root (see the project brief for expected keys).
+
+## Available Scripts
+
+From the repository root you can run:
+
+- `pnpm dev` – shortcut to start the API locally.
+- `pnpm build` – build every workspace package (API, web, shared).
+- `pnpm typecheck` – run TypeScript checks where configured.
+
+Each package also exposes its own scripts – inspect the respective `package.json` for further commands.
