@@ -1,0 +1,15 @@
+{
+  "name": "workflow-saas",
+  "private": true,
+  "packageManager": "pnpm@8.15.4",
+  "scripts": {
+    "build": "pnpm -r run build --if-present",
+    "dev": "pnpm --filter @workflow-saas/api dev",
+    "lint": "pnpm -r run lint --if-present",
+    "test": "pnpm -r run test --if-present",
+    "typecheck": "pnpm -r run typecheck --if-present"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}
